@@ -35,4 +35,12 @@ public class CheckoutPage {
         methods.sendTextToElement(postalCodeTxt, TestData.getData("ZipCode"));
         methods.clickElement(continueBtn);
     }
+
+    public void selectProduct(){
+        if(TestData.getData("Menu_Option").equals(fisrtNameTxt.getText())){
+            fisrtNameTxt.click();
+        }else if(TestData.getData("Category").equals(lastNameTxt.getText())){
+            lastNameTxt.click();
+        }
+    }
 }

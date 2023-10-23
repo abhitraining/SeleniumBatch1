@@ -1,22 +1,21 @@
 package com.tm.stepdefinitions;
 
-import com.tm.drivermanager.DriverInit;
 import com.tm.pom.LoginPage;
 import com.tm.pom.ProductsPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class MyStepdefinitions {
+public class MyStepdefinitions extends DriverInit{
 
     @Given("^User is launch the application$")
     public void userIsLaunchTheApplication() {
-        DriverInit.initDriver("Chrome");
+       // DriverInit.initDriver();
     }
 
     @When("user login to the application with {string} and {string}")
     public void user_login_to_the_application_with_and(String userName, String password) {
-        LoginPage loginPage=new LoginPage(DriverInit.getDriver());
+        LoginPage loginPage=new LoginPage();
         loginPage.logintoThePage(userName,password);
     }
 
@@ -29,7 +28,7 @@ public class MyStepdefinitions {
     @When("^user selects the product and add to the card$")
     public void userSelectsTheProductAndAddToTheCard() {
         ProductsPage productsPage=new ProductsPage(DriverInit.getDriver());
-        productsPage.selectProductandAddTothecart();
+        productsPage.selectProductandAddTothecart(2);
     }
 
     @Then("user is able to see products page")

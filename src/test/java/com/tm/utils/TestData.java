@@ -45,4 +45,7 @@ public class TestData {
     public static String getData(String key){
         return dataComb.get(key);
     }
+    public static void updateData(String key,String value){
+        dataComb.put(key,value);
+    }
 }

@@ -5,7 +5,9 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.io.File;
 import java.util.List;
@@ -19,7 +21,7 @@ public class CommonMethods {
         try {
             ele.sendKeys(value);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            Assert.fail(e.getMessage());
         }
     }
 
@@ -27,7 +29,7 @@ public class CommonMethods {
         try {
             ele.click();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            Assert.fail(e.getMessage());
         }
     }
 
@@ -36,7 +38,7 @@ public class CommonMethods {
             Select sel = new Select(ele);
             sel.selectByVisibleText(value);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            Assert.fail(e.getMessage());
         }
     }
 
@@ -64,6 +66,12 @@ public class CommonMethods {
                 driver.getDriver().switchTo().window(childWindow);
             }
         }
+    }
+
+    public void moveToElement(WebElement ele){
+        Actions act=new Actions(driver.getDriver());
+        act.moveToElement(ele).perform();
+        act.doubleClick(ele).perform();
     }
 
     public void refreshThePage() {
