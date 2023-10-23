@@ -1,12 +1,13 @@
 package com.tm.stepdefinitions;
 
+import com.tm.drivermanager.DriverInit;
 import com.tm.pom.LoginPage;
 import com.tm.pom.ProductsPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class MyStepdefinitions extends DriverInit{
+public class MyStepdefinitions extends DriverInit {
 
     @Given("^User is launch the application$")
     public void userIsLaunchTheApplication() {
@@ -15,7 +16,7 @@ public class MyStepdefinitions extends DriverInit{
 
     @When("user login to the application with {string} and {string}")
     public void user_login_to_the_application_with_and(String userName, String password) {
-        LoginPage loginPage=new LoginPage();
+        LoginPage loginPage=new LoginPage(DriverInit.getDriver());
         loginPage.logintoThePage(userName,password);
     }
 
